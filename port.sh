@@ -1122,6 +1122,7 @@ if [[ "$is_ab_device" == false ]];then
     cp -f build/baserom/boot.img out/${os_type}_${device_code}_${port_rom_version}/boot_official.img
     cp -rf bin/flash/a-only/update-binary out/${os_type}_${device_code}_${port_rom_version}/META-INF/com/google/android/
     cp -rf bin/flash/zstd out/${os_type}_${device_code}_${port_rom_version}/META-INF/
+# 把对应机型的 boot.img 放在 devices/机型代号 文件夹下面
     custom_bootimg_file=$(find devices/$base_rom_code/ -type f -name "boot*.img")
 
     if [[ -f "$custom_bootimg_file" ]];then
