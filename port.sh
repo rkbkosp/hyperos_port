@@ -143,6 +143,7 @@ if [[ ${baserom_type} == 'payload' ]];then
     blue "正在提取底包 [payload.bin]" "Extracting files from BASEROM [payload.bin]"
     unzip ${baserom} payload.bin -d build/baserom > /dev/null 2>&1 ||error "解压底包 [payload.bin] 时出错" "Extracting [payload.bin] error"
     green "底包 [payload.bin] 提取完毕" "[payload.bin] extracted."
+
 elif [[ ${baserom_type} == 'br' ]];then
     blue "正在提取底包 [new.dat.br]" "Extracting files from BASEROM [*.new.dat.br]"
     unzip ${baserom} -d build/baserom  > /dev/null 2>&1 || error "解压底包 [new.dat.br]时出错" "Extracting [new.dat.br] error"
@@ -1078,6 +1079,15 @@ if [[ "$is_ab_device" == false ]];then
     sed -i "s/_ab//g" out/${os_type}_${device_code}_${port_rom_version}/windows_flash_script.bat
     sed -i '/^# SET_ACTION_SLOT_A_BEGIN$/,/^# SET_ACTION_SLOT_A_END$/d' out/${os_type}_${device_code}_${port_rom_version}/mac_linux_flash_script.sh
     sed -i '/^REM SET_ACTION_SLOT_A_BEGIN$/,/^REM SET_ACTION_SLOT_A_END$/d' out/${os_type}_${device_code}_${port_rom_version}/windows_flash_script.bat
+
+## TODO: 在这里写：读取配置判断是不是要从预编译中加载 firmware
+    # 判断是否存在文件夹 prebuilt/firmware/${base_rom_code}
+    if [ -d "prebuilt/firmware/${base_rom_code}" ]; then
+      # 存在的话，复制到 out/${os_type}_${device_code}_${port_rom_version}
+      cp -r "prebuilt/firmware/${base_rom_code}" "build/baserom/firmware-update"
+    else
+        yellow "找不到 firmware 刷机包可能存在异常"
+    fi
 
     if [ -d build/baserom/firmware-update ];then
         mkdir -p out/${os_type}_${device_code}_${port_rom_version}/firmware-update
