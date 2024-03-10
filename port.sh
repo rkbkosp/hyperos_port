@@ -115,7 +115,7 @@ fi
 
 green "ROM初步检测通过" "ROM validation passed."
 
-if [[ "$portrom" =~ SHENNONG|HOUJI ]]; then
+if [[ "$portrom" =~ SHENNONG|HOUJI|AURORA ]]; then
     is_shennong_houji_port=true
 else
     is_shennong_houji_port=false
