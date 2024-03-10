@@ -1080,7 +1080,7 @@ if [[ "$is_ab_device" == false ]];then
     sed -i '/^# SET_ACTION_SLOT_A_BEGIN$/,/^# SET_ACTION_SLOT_A_END$/d' out/${os_type}_${device_code}_${port_rom_version}/mac_linux_flash_script.sh
     sed -i '/^REM SET_ACTION_SLOT_A_BEGIN$/,/^REM SET_ACTION_SLOT_A_END$/d' out/${os_type}_${device_code}_${port_rom_version}/windows_flash_script.bat
 
-## TODO: 在这里写：读取配置判断是不是要从预编译中加载 firmware
+    ## TODO: 在这里写：读取配置判断是不是要从预编译中加载 firmware
     # 判断是否存在文件夹 prebuilt/firmware/${base_rom_code}
     if [ -d "prebuilt/firmware/${base_rom_code}" ]; then
       # 存在的话，复制到 out/${os_type}_${device_code}_${port_rom_version}
