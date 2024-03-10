@@ -4,15 +4,13 @@
 
 # For A-only and V/A-B (not tested) Devices
 
-# Based on Android 13
+# Based on Android 14
 
-# Test Base ROM: A-only Mi 10/PRO/Ultra (MIUI 14 Latset stockrom)
+# specifical changes
+# change it before you want to build a rom yourself
 
-# Test Port ROM: Mi 14/Pro OS1.0.9-1.0.25 Mi 13/PRO OS1.0 23.11.09-23.11.10 DEV
-
-
-build_user="Bruce Teng"
-build_host=$(hostname)
+build_user="rkbkosp"
+build_host="github-actions"
 
 # 底包和移植包为外部参数传入
 baserom="$1"
